@@ -1,15 +1,20 @@
 package maps;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class WordPositionsDriver {
     public static void main(String[] args) {
-        Path filepath = Paths.get("resources/quotes.txt");
+        Path filepath = Path.of("src/main/resources/quotes.txt");
+        WordPositions wp = new WordPositions();
+        wp.computeWordPositions(filepath);
+        wp.printPositions("happy");
+        wp.printPositions("I");
+
         // FILL IN CODE:
         // Create WordPositions for resources/quotes.txt
-        // Create a Scanner; ask the user to enter a word
+
         // print the position of the word in the file, using class WordPositions
+
 
     }
 }

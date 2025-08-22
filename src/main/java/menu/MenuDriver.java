@@ -1,15 +1,16 @@
 package menu;
 
-import java.nio.file.Paths;
+import java.nio.file.Path;
 
 public class MenuDriver {
     public static void main(String[] args) {
 
         // Create three menu items
         // item1 and item2 are read from the file (see burrito.txt and fishTaco.txt.txt)
-        MenuItem item1 = new MenuItem(Paths.get("src/main/java/menu/burrito.txt"));
-        MenuItem item2 = new MenuItem(Paths.get("src/main/java/menu/fishTaco.txt"));
-
+        MenuItem item1 = new MenuItem(Path.of("src/main/resources/burrito.txt"));
+        MenuItem item2 = new MenuItem(Path.of("src/main/resources/fishTaco.txt"));
+        System.out.println(item1);
+        System.out.println(item2);
         // this item is created from scratch, without the text file
         MenuItem item3 = new MenuItem("Tofu Sandwich",  11.24f);
 

@@ -32,6 +32,10 @@ public class LibraryCatalog {
      */
     public boolean checkoutBook(String title) {
         // FILL IN CODE
+        for (Book book : books) {
+            if (book.getTitle().equals(title))
+                return book.checkout();
+        }
         return false;
     }
 
@@ -43,6 +47,10 @@ public class LibraryCatalog {
      */
     public boolean returnBook(String title) {
         // FILL IN CODE
+        for (Book book : books) {
+            if (book.getTitle().equals(title))
+                return book.returnToLibrary();
+        }
 
         return false;
     }
@@ -52,7 +60,11 @@ public class LibraryCatalog {
      */
     public void printAvailableBooks() {
         // FILL IN CODE
-
+        for (Book book : books) {
+            if (!book.isCheckedOut()) {
+                System.out.println(book);
+            }
+        }
     }
 
 }

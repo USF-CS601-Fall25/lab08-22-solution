@@ -40,7 +40,10 @@ public class Book {
      */
     public boolean checkout() {
         // FILL IN CODE
-
+        if (!isCheckedOut) {
+            isCheckedOut = true;
+            return true;
+        }
         return false;
     }
 
@@ -52,7 +55,10 @@ public class Book {
      */
     public boolean returnToLibrary() {
         // FILL IN CODE
-
+        if (isCheckedOut) {
+            isCheckedOut = false;
+            return true;
+        }
         return false;
     }
 }

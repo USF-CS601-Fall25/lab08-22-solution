@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /** A class that keeps track of the word positions in the text */
 public class WordPositions {
@@ -12,6 +16,7 @@ public class WordPositions {
        Example: suppose the text file contains: mouse chased mouse
        Then "mouse" should be mapped to {0, 2}, "chased" to {1}.
      */
+    private Map<String, List<Integer>> positions = new HashMap<>();
 
     /**
      * Read words from the file and create or update the list of positions for each word
@@ -28,7 +33,18 @@ public class WordPositions {
         // Documentation: https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#newBufferedReader-java.nio.file.Path-
         try(BufferedReader br = Files.newBufferedReader(filepath)) {
             // FILL IN CODE: use readLine method from class BufferedReader to reach each line of the file
-
+            String line = "";
+            int count = 0;
+            while ((line = br.readLine()) != null) {
+                String[] words = line.split(" ");
+                for (String word: words) {
+                    word = word.replaceAll("[,\\.]", "");
+                    if (!positions.containsKey(word))
+                        positions.put(word, new ArrayList<>());
+                    positions.get(word).add(count);
+                    count++;
+                }
+            }
         }
         catch (IOException e) {
             System.out.println(e);
@@ -46,6 +62,7 @@ public class WordPositions {
         // Ex: for the word "happy", you should get [2, 9, 17, 22]
         // If the word is not in the map, print nothing.
         // FILL IN CODE
+        System.out.println(positions.get(word));
 
     }
 }
